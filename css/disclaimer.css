@@ -1,0 +1,29 @@
+/* Disclaimer Section Styles */
+.disclaimer {
+    background: linear-gradient(135deg, #CC5288, #CC105E); /* Darkened pink gradient */
+    color: var(--white); /* Set text color to white */
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.disclaimer .section-header h2 {
+    color: var(--white); /* Updated text color */
+}
+
+.disclaimer .disclaimer-content {
+    max-width: 800px;
+    margin: 0 auto;
+    color: rgba(255, 255, 255, 0.85); /* Updated text color */
+}
+
+.disclaimer-content p {
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.disclaimer-content ul {
+    list-style: disc;
+    padding-left: 20px;
+    color: rgba(255, 255, 255, 0.85); /* Updated text color */
+}
