@@ -1,0 +1,60 @@
+/*--------------------------------------------------------------
+# Disclaimer Section Styles with 3D Animation
+--------------------------------------------------------------*/
+.disclaimer {
+    background: linear-gradient(135deg, #FF69B4, #800080);
+    color: var(--white);
+    padding: 40px 0;
+    position: relative;
+    overflow: hidden;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    animation: fadeIn3D 0.8s ease-out forwards;
+    transition: transform 0.5s;
+  }
+  
+  .disclaimer-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    transform: translateZ(20px);
+    animation: fadeIn3D 0.8s ease-out forwards;
+  }
+  
+  .disclaimer-text {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--text-muted);
+    transform: translateZ(20px);
+    animation: fadeIn3D 0.8s ease-out forwards;
+  }
+  
+  .disclaimer-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background: var(--gold);
+    color: var(--primary);
+    border-radius: 5px;
+    text-decoration: none;
+    transform: translateZ(20px);
+    transition: background 0.3s ease, transform 0.3s ease;
+    animation: fadeIn3D 0.8s ease-out forwards;
+  }
+  
+  .disclaimer-button:hover {
+    background: var(--primary);
+    transform: perspective(800px) translateY(-5px) translateZ(20px) rotateX(3deg);
+  }
+  
+  /* 3D Fade-In Keyframes */
+  @keyframes fadeIn3D {
+    from {
+      opacity: 0;
+      transform: perspective(800px) translateY(20px) rotateX(10deg);
+    }
+    to {
+      opacity: 1;
+      transform: perspective(800px) translateY(0) rotateX(0deg);
+    }
+  }
+  
