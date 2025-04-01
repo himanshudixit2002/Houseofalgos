@@ -20,22 +20,42 @@ import {
 import Image from "next/image"
 import { motion } from "framer-motion"
 import { Faq } from "./components/faq"
-import { AIImage } from "./components/ai-image"
-import { CurrencyTicker } from "./components/currency-ticker"
-import { CartoonTradingImage } from "./components/cartoon-trading-image"
-import { Feature3DImage } from "./components/feature-3d-image"
+import dynamic from 'next/dynamic';
+
+const AIImage = dynamic(() => import("./components/ai-image").then(mod => mod.AIImage));
+const CurrencyTicker = dynamic(() => import("./components/currency-ticker").then(mod => mod.CurrencyTicker));
+const CartoonTradingImage = dynamic(() => import("./components/cartoon-trading-image").then(mod => mod.CartoonTradingImage));
+const Feature3DImage = dynamic(() => import("./components/feature-3d-image").then(mod => mod.Feature3DImage));
 
 export default function HouseOfAlgos() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState("home")
   const [logoError, setLogoError] = useState(false)
-  const [scrollY, setScrollY] = useState(0)
+  const [scrollY, setScrollY] = useState(0);
+
+useEffect(() => {
+  const handleScroll = () => {
+    setScrollY(window.scrollY);
+  };
+
+  window.addEventListener("scroll", handleScroll);
+  return () => window.removeEventListener("scroll", handleScroll);
+}, []);
+
+useEffect(() => {
+  const handleScroll = () => {
+    setScrollY(window.scrollY);
+  };
+
+  window.addEventListener("scroll", handleScroll);
+  return () => window.removeEventListener("scroll", handleScroll);
+}, []);
   const heroRef = useRef(null)
 
   // Debounce function
-  function debounce(func, wait) {
-    let timeout
-    return function executedFunction(...args) {
+  function debounce(func: (...args: any[]) => void, wait: number) {
+    let timeout: NodeJS.Timeout;
+    return function executedFunction(...args: any[]) {
       const later = () => {
         clearTimeout(timeout)
         func(...args)
@@ -257,15 +277,25 @@ export default function HouseOfAlgos() {
               playsInline
               className="absolute inset-0 w-full h-full object-cover"
               style={{ zIndex: 0 }}
-              onError={(e) => console.error("Video failed to load:", e)}
+              onError={(e) => {
+                console.error("Video failed to load:", e);
+                setLogoError(true);
+              }}
+              onLoadedData={() => setLogoError(false)}
+              style={{ width: '100%', height: '100%' }}
             >
               <source src="/vid.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
+              <source src="/vid.webm" type="video/webm" />
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-900 to-pink-700 flex items-center justify-center text-center p-8">
+                <p className="text-white text-lg">
+                  Video failed to load. Please check your browser settings or try a different browser.
+                </p>
+              </div>
             </video>
             {/* Semi-transparent overlay - increased transparency */}
             <div
               className="absolute inset-0"
-              style={{ background: "linear-gradient(135deg, rgba(83, 22, 95, 0.3) 0%, rgba(186, 60, 94, 0.3) 100%)" }}
+              style={{ background: "linear-gradient(135deg, rgba(83, 22, 95, 0.2) 0%, rgba(186, 60, 94, 0.2) 100%)" }}
             ></div>
           </div>
 
@@ -1143,4 +1173,3 @@ export default function HouseOfAlgos() {
     </div>
   )
 }
-

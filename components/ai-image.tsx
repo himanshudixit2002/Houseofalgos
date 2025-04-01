@@ -1,9 +1,9 @@
 interface AIImageProps {
-  title: string
-  width: number
-  height: number
-  type?: "trading" | "chart" | "money" | "platform" | "automation" | "analysis"
-  className?: string
+  title: string;
+  width: number;
+  height: number;
+  type?: "trading" | "chart" | "money" | "platform" | "automation" | "analysis";
+  className?: string;
 }
 
 export function AIImage({ title, width, height, type = "trading", className = "" }: AIImageProps) {
@@ -23,7 +23,7 @@ export function AIImage({ title, width, height, type = "trading", className = ""
               <feComposite in="SourceGraphic" in2="blur" operator="over" />
             </filter>
           </defs>
-        )
+        );
       case "chart":
         return (
           <defs>
@@ -37,7 +37,7 @@ export function AIImage({ title, width, height, type = "trading", className = ""
               <feComposite in="SourceGraphic" in2="blur" operator="over" />
             </filter>
           </defs>
-        )
+        );
       case "money":
         return (
           <defs>
@@ -51,7 +51,7 @@ export function AIImage({ title, width, height, type = "trading", className = ""
               <feComposite in="SourceGraphic" in2="blur" operator="over" />
             </filter>
           </defs>
-        )
+        );
       case "platform":
         return (
           <defs>
@@ -65,7 +65,7 @@ export function AIImage({ title, width, height, type = "trading", className = ""
               <feComposite in="SourceGraphic" in2="blur" operator="over" />
             </filter>
           </defs>
-        )
+        );
       case "automation":
         return (
           <defs>
@@ -79,7 +79,7 @@ export function AIImage({ title, width, height, type = "trading", className = ""
               <feComposite in="SourceGraphic" in2="blur" operator="over" />
             </filter>
           </defs>
-        )
+        );
       case "analysis":
         return (
           <defs>
@@ -93,7 +93,7 @@ export function AIImage({ title, width, height, type = "trading", className = ""
               <feComposite in="SourceGraphic" in2="blur" operator="over" />
             </filter>
           </defs>
-        )
+        );
       default:
         return (
           <defs>
@@ -103,14 +103,14 @@ export function AIImage({ title, width, height, type = "trading", className = ""
               <stop offset="100%" stopColor="#F59E0B" /> {/* Amber/Gold */}
             </linearGradient>
           </defs>
-        )
+        );
     }
-  }
+  };
 
   // Choose SVG content based on type
   const getSvgContent = () => {
-    const gradientId = `gradient-${title.replace(/\s+/g, "-")}`
-    const glowId = `glow-${title.replace(/\s+/g, "-")}`
+    const gradientId = `gradient-${title.replace(/\s+/g, "-")}`;
+    const glowId = `glow-${title.replace(/\s+/g, "-")}`;
 
     switch (type) {
       case "trading":
@@ -154,7 +154,7 @@ export function AIImage({ title, width, height, type = "trading", className = ""
             <circle cx="85%" cy="15%" r="3%" fill="#F59E0B" opacity="0.5" />
             <circle cx="15%" cy="85%" r="3%" fill="#9333EA" opacity="0.5" />
           </>
-        )
+        );
       case "chart":
         return (
           <>
@@ -195,7 +195,7 @@ export function AIImage({ title, width, height, type = "trading", className = ""
             <circle cx="60" cy="50" r="2" fill="#F59E0B" />
             <circle cx="70" cy="30" r="2" fill="#F59E0B" />
           </>
-        )
+        );
       case "money":
         return (
           <>
@@ -263,7 +263,7 @@ export function AIImage({ title, width, height, type = "trading", className = ""
               opacity="0.5"
             />
           </>
-        )
+        );
       case "platform":
         return (
           <>
@@ -296,7 +296,7 @@ export function AIImage({ title, width, height, type = "trading", className = ""
             <circle cx="25%" cy="25%" r="2%" fill="#EC4899" />
             <circle cx="30%" cy="25%" r="2%" fill="#9333EA" />
           </>
-        )
+        );
       case "automation":
         return (
           <>
@@ -326,11 +326,11 @@ export function AIImage({ title, width, height, type = "trading", className = ""
                 repeatCount="indefinite"
               />
               {Array.from({ length: 12 }).map((_, i) => {
-                const angle = (i * 30 * Math.PI) / 180
-                const x1 = 50 + 25 * Math.cos(angle)
-                const y1 = 50 + 25 * Math.sin(angle)
-                const x2 = 50 + 32 * Math.cos(angle)
-                const y2 = 50 + 32 * Math.sin(angle)
+                const angle = (i * 30 * Math.PI) / 180;
+                const x1 = 50 + 25 * Math.cos(angle);
+                const y1 = 50 + 25 * Math.sin(angle);
+                const x2 = 50 + 32 * Math.cos(angle);
+                const y2 = 50 + 32 * Math.sin(angle);
                 return (
                   <line
                     key={i}
@@ -341,7 +341,7 @@ export function AIImage({ title, width, height, type = "trading", className = ""
                     stroke={`url(#${gradientId})`}
                     strokeWidth="2"
                   />
-                )
+                );
               })}
             </g>
 
@@ -371,11 +371,11 @@ export function AIImage({ title, width, height, type = "trading", className = ""
                 repeatCount="indefinite"
               />
               {Array.from({ length: 8 }).map((_, i) => {
-                const angle = (i * 45 * Math.PI) / 180
-                const x1 = 70 + 12 * Math.cos(angle)
-                const y1 = 35 + 12 * Math.sin(angle)
-                const x2 = 70 + 16 * Math.cos(angle)
-                const y2 = 35 + 16 * Math.sin(angle)
+                const angle = (i * 45 * Math.PI) / 180;
+                const x1 = 70 + 12 * Math.cos(angle);
+                const y1 = 35 + 12 * Math.sin(angle);
+                const x2 = 70 + 16 * Math.cos(angle);
+                const y2 = 35 + 16 * Math.sin(angle);
                 return (
                   <line
                     key={i}
@@ -386,7 +386,7 @@ export function AIImage({ title, width, height, type = "trading", className = ""
                     stroke={`url(#${gradientId})`}
                     strokeWidth="1.5"
                   />
-                )
+                );
               })}
             </g>
 
@@ -414,7 +414,7 @@ export function AIImage({ title, width, height, type = "trading", className = ""
               11010010
             </text>
           </>
-        )
+        );
       case "analysis":
         return (
           <>
@@ -458,7 +458,7 @@ export function AIImage({ title, width, height, type = "trading", className = ""
             <circle cx="15%" cy="15%" r="3%" fill="#9333EA" opacity="0.5" />
             <circle cx="85%" cy="85%" r="3%" fill="#EC4899" opacity="0.5" />
           </>
-        )
+        );
       default:
         return (
           <>
@@ -467,9 +467,9 @@ export function AIImage({ title, width, height, type = "trading", className = ""
               {title}
             </text>
           </>
-        )
+        );
     }
-  }
+  };
 
   return (
     <svg
@@ -499,6 +499,5 @@ export function AIImage({ title, width, height, type = "trading", className = ""
         {title}
       </text>
     </svg>
-  )
+  );
 }
-
